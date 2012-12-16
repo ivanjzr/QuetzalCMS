@@ -1,0 +1,125 @@
+$def with (lang, user_data, drop_box)
+
+$#Common properties
+$var lang_administration:$lang['common_administration']
+
+$#Page properties
+$var lang_page_title:$lang['index_page_title']
+
+<div id="inner_content">
+    <div id="top_panel">
+        <div id="breadcrumbs">
+
+            Edit User
+
+        </div>
+        <div id="panel_buttons">
+
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <div id="main_content">
+
+        <form method="POST" onsubmit="return false;">
+            <fieldset style="padding:16px;">
+                <input type="hidden" name="user_oid_edit" id="user_oid_edit" value="$user_data['id']">
+                <table cellpadding="4" cellspacing="4">
+                    <tr>
+                        <td>
+                            Id:
+                        </td>
+                        <td>
+                            $user_data['id']
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Name:
+                        </td>
+                        <td>
+                            <input type="text" name="user_name_edit" id="user_name_edit" value="$user_data['name']">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Username:
+                        </td>
+                        <td>
+                            $user_data['username']
+                            <input type="hidden" name="user_username_edit" id="user_username_edit" value="$user_data['username']">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Current password:
+                        </td>
+                        <td>
+                            <input type="password" name="user_current_password_edit" id="user_current_password_edit">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            New password:
+                        </td>
+                        <td>
+                            <input type="password" name="user_new_password_edit" id="user_new_password_edit">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Confirm new password:
+                        </td>
+                        <td>
+                            <input type="password" name="user_new_password_confirm_edit" id="user_new_password_confirm_edit">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Email:
+                        </td>
+                        <td>
+                            <input type="text" name="user_email_edit" id="user_email_edit" value="$user_data['email']">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Privileges level:
+                        </td>
+                        <td>
+                            <select name="user_priv_lev_edit" id="user_priv_lev_edit">
+                                $for opt in drop_box:
+                                    $if opt['key'] == user_data['priv_lev']:
+                                        <option value="$opt['key']" selected> $opt['value'] </option>
+                                    $else:
+                                        <option value="$opt['key']"> $opt['value'] </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Default:
+                        </td>
+                        <td>
+                            $if user_data['is_default']=="true":
+                                <input type="checkbox" name="user_default_edit" id="user_default_edit" disabled checked>
+                            $else:
+                                <input type="checkbox" name="user_default_edit" id="user_default_edit">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="right">
+                            <input type="button" value="Save" id="save_user_edit">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+
+
+
+    </div>
+</div>
+
+
+

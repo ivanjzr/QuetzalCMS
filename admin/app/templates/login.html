@@ -1,0 +1,66 @@
+$def with (lang)
+
+$#Common properties
+$var lang_administration:$lang['common_administration']
+
+$#Page properties
+$var lang_page_title:$lang['login_page_title']
+
+
+<!-- inner content-->
+<div id="inner_content">
+    <div id="top_panel">
+        <div id="breadcrumbs">
+
+            $lang['login_initial_message']
+
+        </div>
+        <div id="panel_buttons">
+
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <div id="main_content">
+
+        <form method="POST">
+            <fieldset style="padding:16px; width:300px; height:175px;margin-left: auto ;margin-right: auto;">
+                <table cellpadding="4" cellspacing="4">
+                    <tr>
+                        <td>
+                            $lang['login_user']
+                        </td>
+                        <td>
+                            <input type="text" name="username" id="username">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            $lang['login_password']
+                        </td>
+                        <td>
+                            <input type="password" name="password" id="password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="right">
+                            <input type="button" value="$lang['login_send_button']" id="login">
+                        </td>
+                    </tr>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <a href="$admin_api_url/forgot_password" class=""> $lang['login_forgot_password'] </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <a href="#" class="set_lang_en_us"> en-us </a> | <a href="#" class="set_lang_es_mx"> es-mx </a>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+    </div>
+</div>
+<!-- inner content end -->

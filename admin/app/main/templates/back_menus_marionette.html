@@ -1,0 +1,64 @@
+$def with (lang)
+
+$#Common properties
+$var lang_administration:$lang['common_administration']
+
+$#Page properties
+$var lang_page_title:$lang['index_page_title']
+
+
+<div id="inner_content">
+    <div id="top_panel">
+        <div id="breadcrumbs">
+            Menus
+        </div>
+        <div id="panel_buttons">
+
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <div id="main_content">
+        <a href="$admin_api_url/menus/new">New Menu</a><br /><br />
+
+        <div id="menus_container">
+            <script id="main-template-layout" type="text/template">
+                <div id="messages"></div>
+                <div id="results-container"></div>
+            </script>
+            <script id="grid-template" type="text/template">
+                <thead>
+                <tr>
+                    <th> id: </th>
+                    <th> title: </th>
+                    <th> description: </th>
+                    <th> path: </th>
+                    <th> operations: </th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </script>
+
+            <script id="items-template" type="text/template">
+                <td>
+                    {{id}}
+                </td>
+                <td>
+                    {{title}}
+                </td>
+                <td>
+                    {{descr}}
+                </td>
+                <td>
+                    {{path}}
+                </td>
+                <td>
+                    <a href="$admin_api_url/menus/edit/{{id}}" id="edit"> Edit </a> | <a href="#" alt="{{id}}" id="remove"> Remove </a>
+                </td>
+            </script>
+        </div>
+
+    </div>
+</div>
+
+
+

@@ -1,0 +1,71 @@
+#PYAML DOCUMENTATION
+#http://pyyaml.org/wiki/PyYAMLDocumentation#Blockmappings
+#
+#--------------------------- Lang -------------------------------
+default_language: en_us
+
+#--------------------------- API URLS ----------------------------
+# Admin API Url
+admin_api_url: /system.administration
+# API Url
+api_url: /api
+# API Class prefix
+api_class_prefix: Api
+
+#---------------------------- Directories
+# Project directory
+#For Windows
+quetzal_dir: C:\\workspace\\quetzal_projects\\my_site\\html
+#For Linux
+#quetzal_dir: /home/quetzal_projects/my_site/html
+
+
+#----------------------------- Sessions -------------------------
+#diskstore, dbstore
+session_type: dbstore
+# Session time
+session_time:
+  days: 0
+  seconds: 0
+  minutes: 0
+  hours: 24
+
+#----------------------------- Cookies -------------------------
+#Cookie store data
+cookie_name: session_id
+cookie_domain: None
+cookie_timeout: 86400 #24 * 60 * 60, # 24 hours   in seconds
+cookie_secret_key: S6c94F6AX2c5a6FDF4A9
+
+
+#------------------------------ Databases -----------------------
+# MongoDb/MongoEngine Configuration
+mongodb:
+  host: localhost
+  db: dbname
+  port: 27017
+  user: mongouser
+  password: abc123
+
+# MySql Configuration
+mysql:
+  host: localhost
+  db: mysqluser
+  port: 3306
+  user: root
+  password: abc123
+
+#--------------------------- Auto Reload changes -----------------
+#if set to false in production apache must be restarted manually
+apache_restart_thread: True
+
+#--------------------------- Error Handling ----------------------
+debug_errors: False
+
+#--------------------------- SMTP ---------------------------
+#smtp_path: /etc/smtp...
+smtp_server: mail.mydomain.com
+smtp_port: 587
+smtp_user: informes@mydomain.com.mx
+smtp_pwd: smtp_pass
+

@@ -1,0 +1,46 @@
+$def with (lang, modules)
+
+$#Common properties
+$var lang_administration:$lang['common_administration']
+
+$#Page properties
+$var lang_page_title:$lang['index_page_title']
+
+
+<div id="inner_content">
+    <div id="top_panel">
+        <div id="breadcrumbs">
+
+            Modules
+
+        </div>
+        <div id="panel_buttons">
+
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <div id="main_content">
+
+        <a href="$admin_api_url/modules/new">New Module</a><br /><br />
+
+        <table>
+            <tr>
+                <td colspan="2">
+                    Title:
+                </td>
+            </tr>
+            $for module in modules:
+            <tr>
+                <td>
+                    <strong>$module['title']</strong>
+                </td>
+                <td>
+                    <a href="$admin_api_url/modules/edit/$module['id']"> Edit </a> | <a href="#" alt="$module['id']" class="del_module"> Remove </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+

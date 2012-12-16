@@ -1,0 +1,71 @@
+$def with (lang, module_data)
+
+$#Common properties
+$var lang_administration:$lang['common_administration']
+
+$#Page properties
+$var lang_page_title:$lang['index_page_title']
+
+
+
+<div id="inner_content">
+    <div id="top_panel">
+        <div id="breadcrumbs">
+
+            Edit Module
+
+        </div>
+        <div id="panel_buttons">
+
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <div id="main_content">
+
+        <form method="POST" onsubmit="return false;">
+            <fieldset style="padding:16px;">
+                <input type="hidden" name="mod_oid" id="mod_oid" value="$module_data['id']">
+                <table cellpadding="4" cellspacing="4">
+                    <tr>
+                        <td>
+                            Id:
+                        </td>
+                        <td>
+                            $module_data['id']
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Title:
+                        </td>
+                        <td>
+                            <input type="text" name="module_title" id="module_title_edit" value="$module_data['title']">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Content:
+                        </td>
+                        <td>
+                            <textarea name="module_content" id="module_content_edit" rows="30" cols="100" style="width: 80%">
+                                $module_data['contents']
+                            </textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="right">
+                            <input type="button" value="Save" id="save_module">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+
+
+
+    </div>
+</div>
+
+
+

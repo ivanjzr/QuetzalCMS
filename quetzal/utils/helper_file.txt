@@ -1,0 +1,620 @@
+https://groups.google.com/forum/?fromgroups=#!searchin/webpy/webpy$20add_mapping/webpy/-io9xz9kWA8/xtu8zAtIjw8J
+http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python
+
+
+
+def set_path(self, mapped_class, class_name, resource):
+        #establecemos el valor de path por defecto vacio
+        predefined_path = ''
+        #remove "Api" from class name
+        api_name = class_name[3:]
+        try:
+            if hasattr(mapped_class, 'path'):
+                custom_path = getattr(mapped_class, 'path')
+                self.api_path = '/' + api_level + '/' + resource + custom_path
+                return
+        except:
+            pass
+        self.api_path = '/' + api_level + '/' + resource + '/' + api_name
+
+
+    def get_path(self):
+        return self.api_path.lower()
+
+
+
+
+parte 1
+
+
+class WsgiHandler:
+    def __call__(self, environ, start_response):
+        response_headers = [('Content-type', 'text/plain')]
+        start_response('200 OK', response_headers)
+        return "output"
+
+class webpy_handler():
+    def __init__(self):pass
+    def run(self):
+        try:
+            from idx import idx_router
+            return idx_router.route
+        except Exception as e:
+            return
+
+application = webpy_handler().run()
+
+
+
+
+parte 2
+
+
+
+import web
+
+from idx import http
+
+
+http.httpResponse("que pedo")
+
+
+#Handle auto application manually
+class webpy_auto_application(http.httpRequest):
+    def __init__(self):
+        self.app = web.auto_application()
+
+    def page(self):
+        return self.app.page
+    def get_page(self):
+        return self.app.wsgifunc()
+
+    def getreques(self):
+        return self.getRequest()
+
+
+
+
+#Instance of a webpy auto application
+app = webpy_auto_application()
+
+#set base page with page instance
+class basePage(app.page()):
+    #return current page in context
+    def get(self):
+        return app.get_page()
+
+    def get_response(self):
+        return app.getreques()
+
+add(self,class)
+__meta__ = class
+
+
+
+
+
+
+
+parte 3
+from idx import base
+
+
+
+from idx.categories import cats
+
+base.basePage.addSection(cats.Categories)
+
+
+
+#Categories handler--------------
+from idx.categories import model as cats_model
+#from idx.categories import view as cats_view
+
+
+from idx import http
+#Establecemos parametros del objeto al cual se llama
+class requestsHandler(http.httpRequest):
+
+    pass
+
+
+#---main base category
+class baseCategories(base.basePage):
+    path = "/categories"
+
+    def __init__(self):
+
+
+        request = "my request"
+        self.response = self.get_response()
+
+
+    def GET(self):
+
+        return self.response
+
+
+
+#main base index--------------------------
+class idx(base.basePage):
+    path = "/.*"
+    def GET(self):
+        return "Index"
+
+
+
+
+#Get page from current page handler context
+route = base.basePage().get()
+
+
+
+
+
+
+
+parte 4 http
+from threading import local
+
+
+_response = local()
+resp = "mi respuesta"
+
+
+
+class httpResponse:
+    global resp
+    def __init__(self,response):
+        resp = response
+
+
+
+class httpRequest:
+    global resp
+    def getRequest(self):
+        return resp
+
+
+
+parte 5 vista
+#importamos el http para usar el request
+from idx import http
+
+
+class CategoriesView:
+    def displayView(self):
+        #ponemos el valor
+        httpResponse("html Text hurray!!")
+
+
+
+
+
+
+parte helper file
+import os, sys, platform
+import web
+import urlparse
+from urllib import quote
+from threading import local
+
+sys_platform = None
+#Get current base dir
+basedir = os.path.dirname(os.path.abspath(__file__))
+
+#Verify what system is being used & append current path dynamically
+if platform.system() == 'Windows':
+    #Import path so we can be able to use files and directories
+    path = basedir
+    if path not in sys.path:
+        sys.path.append(path)
+    sys_platform = 'Windows'
+    #Use win mon for Dev on windows environments
+    import _win_mon
+    _win_mon._restart(basedir)
+
+elif platform.system() == 'Linux':
+    path = basedir
+    if path not in sys.path:
+        sys.path.append(path)
+    sys_platform = 'Linux'
+    #Use lin mon for Dev on linux environments
+    import _lin_mon
+    _lin_mon.start(interval=1.0)
+    _lin_mon.track(basedir)
+
+
+
+
+
+
+
+_urlconfs = local()
+
+
+
+
+
+class WSGIRequest():
+    def __init__(self, environ):
+        #obtenemos defaults e inicializamos valores
+        self.environ = environ
+        self.method = environ['REQUEST_METHOD'].upper()
+
+    def get_query_string(self):
+        # RFC 3986 requires query string arguments to be in the ASCII range.
+        # Rather than crash if this doesn't happen, we encode defensively.
+        script_url = "environ['REQUEST_METHOD'].upper()"
+        return script_url
+
+    def GET(self):
+        return "que pedo"
+
+
+
+
+
+class Stepper:
+    def __init__(self,func,args):
+        self.func = func
+        self.args = args
+
+    def __getitem__(self, item):
+        return (self.func, self.args)[item]
+
+
+
+
+
+def myfunc(value):
+    return value
+
+
+class C(object):
+    def __init__(self):
+        self._x = None
+
+    def getx(self):
+        return self._x
+    def setx(self, value):
+        self._x = value
+    def delx(self):
+        del self._x
+    x = property(getx, setx, delx, "I'm the 'x' property.")
+
+
+
+def framework_func(request):
+    def GET(self):
+        return "hi there2"
+    return "hi there"
+
+
+class ff:
+    def GET(self,request):
+        return "que pex"
+
+class func:
+    def __init__(self,func,args):
+        self.func = func
+        self.args = args
+
+    def __getitem__(self, item):
+        return (self.func, self.args)[item]
+
+
+
+class httpResponse(object):
+    def __init__(self,response):
+        self.response = response
+
+    def setResponse(self,newvalue):
+        self.response = newvalue
+
+    def getResponse(self):
+        return self.response
+
+
+class myf(object):
+    def __init__(self,value):
+        self.value = value
+
+    def GET(self):
+        return httpResponse("mi nuevo tote")
+
+
+httpResp = local()
+
+#esperemos a que la funcion de usuario llene el httpresponse y luego recogemos el valor
+class cb_func(httpResponse):
+    def __init__(self,request):
+        #scamos el callback el url el cual es el framework_func
+
+        a = super
+        b = super.__init__(self,"que pacho")
+
+        self.setResponse("mi respuesta")
+
+        self.result = self.getResponse()
+
+    def __repr__(self):
+        return "cb_func(func=%s)" % (self.func)
+
+
+
+#abrimos la configuracion y entramos dentro del urlconf
+#desde ahi vamos a sacar el metodo callback y lo vamos a ejecutar solamente cuando haga match el url proporcionado
+#con el del querystring
+#seria if urlpattern = urlquerystring then execute callback function
+#a esa callback function le vamos a pasar el request de la cual al mismo tiempo
+#va a heredar los metodos, post, get y va a devolver la respuesta
+
+
+
+
+def get_response(request):
+    _urlconfs.value = "MY.URL.CONF"
+
+    #si el urlpattern hace match con el query string entonces
+    #sacamos el callback function del urlconf
+    #supongamos este es el callback function del url pattern
+    #hacemos toda la logica y sacamos el callback function del url conf el cual es el siguiente
+    cb = cb_func
+
+    #obtenemos la funcion y la direccion del stepper este solo se ejecuta de manera automatica
+    callback, callback_args = Stepper(cb,"myArgumentos")
+
+    #le pasamos al callback su request
+    response = callback(request)
+
+
+    #el valor de retorno del callback debe de ser la respuesta
+    res = response.result
+
+    #return _urlconfs.value
+    return res
+
+
+
+class WsgiHandler:
+
+    #inicializamos el wsgi request
+    #obtenemos las variables get, post, asi como el contenido que se va a poner como resultado,
+    #este contenido se obtiene mediante hacer override del metodo GET
+    request_class = WSGIRequest
+
+    def __call__(self, environ, start_response):
+
+
+        #instanciamos el wsgi request con el nuevo environ del mod_wsgi
+        request = self.request_class(environ)
+
+        #aqui comienza tocho el rockandroll por que le pasamos el request consus valores y obtenemos la salida
+        output = get_response(request)
+
+
+        status = '200 OK'
+        response_headers = [('Content-type', 'text/plain')]
+        start_response(status, response_headers)
+        return [output]
+
+
+
+application = WsgiHandler()
+
+
+
+
+
+
+class basePage(object):
+    def __init__(self,webpage):
+        self.page = webpage
+
+
+class childPage(basePage):
+    def __init__(self,webpage):
+        super(childPage,self).__init__(webpage)
+
+
+class webapp(web.auto_application):
+
+    def myvalor(self,valor):
+        return valor
+
+    def setPage(self):
+        childpage = childPage(self.page)
+
+    def getPage(self):
+        return self.page
+
+    def getApp(self):
+        return self.wsgifunc()
+
+
+a = webapp()
+
+#aqui esta hereda directamente
+class hello(a.getPage()):
+    def GET(self):
+        return a.myvalor('que pacho')
+
+
+application = a.getApp()
+
+
+
+def application( environ, start_response):
+    output = "resp"
+    status = '200 OK'
+    response_headers = [('Content-type', 'text/plain')]
+    start_response(status, response_headers)
+    return [output]
+
+
+class WsgiHandler:
+    def __call__(self, environ, start_response):
+        output = "resp"
+        status = '200 OK'
+        response_headers = [('Content-type', 'text/plain')]
+        start_response(status, response_headers)
+        return [output]
+
+
+
+        for f in os.listdir(path):
+            if not f.startswith('.'):
+                yield f
+
+
+
+
+http://www.python.org/dev/peps/pep-0302/
+http://www.python.org/dev/peps/pep-0333/
+http://webpy.org/cookbook/ctx
+
+
+
+
+import web
+
+class admin_handler:
+    def GET(self):
+        return "iben"
+
+class WsgiHandler:
+    def __call__(self, environ, start_response):
+        try:
+
+            app = web.application(mapping=(), fvars=globals())
+            app.add_mapping('/system.administration/', admin_handler)
+            app.add_mapping('/abc/', admin_handler)
+            app.add_mapping('/def/', admin_handler)
+
+            output = str(app.mapping[1])
+
+        except Exception as e:
+            output = str(e)
+
+        status = '200 OK'
+        response_headers = [('Content-type', 'text/plain')]
+        start_response(status, response_headers)
+        return [output]
+
+
+
+application = WsgiHandler()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class route:
+
+    def __init__(self):
+        pass
+
+    def add_routes(self):
+
+        register_view = [
+            {
+                'module':'app.categories.view',
+                'handler':'myapp'
+            },
+            {
+                'module':'idx.categories.view',
+                'handler':'myapp2'
+            }
+        ]
+
+        register_module = [
+            {
+                'module':'idx.categories.model'
+            }
+        ]
+
+        return register_module, register_view
+
+
+
+
+
+
+
+
+
+
+
+
+        #import accordingly
+        from app import idx_application
+
+
+        #para utilizar la instancia obtenemos las rutas de la applicacion
+        app_router = idx_application.route()
+        modules, routes = app_router.add_routes()
+
+        for i in range(len(routes)):
+            route = routes[i]
+            self._base.addMapping_class(route['module'],route['handler'])
+
+        for i in range(len(modules)):
+            module = modules[i]
+            self._base.addMapping_module(module['module'])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import web
+
+
+
+
+urls = (
+    "", "login_redirect",
+    "/login", "login"
+    )
+
+class login_redirect:
+    def GET(self): raise web.seeother('/login')
+
+class login:
+    def GET(self):
+        return "loging in"
+
+
+
+admin_app = web.application(urls, locals())
+
+
+class helo2:
+    def GET(self):
+        return "helou there it works!!"
+
+
+admin_app.add_mapping('/helo2', helo2)
+
+
+
+get_index = admin_app
+

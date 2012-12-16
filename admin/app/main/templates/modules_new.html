@@ -1,0 +1,61 @@
+$def with (lang)
+
+$#Common properties
+$var lang_administration:$lang['common_administration']
+
+$#Page properties
+$var lang_page_title:$lang['index_page_title']
+
+
+<div id="inner_content">
+    <div id="top_panel">
+        <div id="breadcrumbs">
+
+            New Module
+
+        </div>
+        <div id="panel_buttons">
+
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <div id="main_content">
+        <a href="$admin_api_url/menus/new">New Menu</a><br /><br />
+
+        <form method="POST" onsubmit="return false;">
+            <fieldset style="padding:16px;">
+                <table cellpadding="4" cellspacing="4">
+                    <tr>
+                        <td>
+                            Module Title:
+                        </td>
+                        <td>
+                            <input type="text" name="module_title" id="module_title_add">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Module content:
+                        </td>
+                        <td>
+                            <textarea name="module_content" id="module_content_add" rows="30" cols="100" style="width: 80%">
+                            </textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="right">
+                            <input type="button" value="Add" id="add_module">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+
+
+
+    </div>
+</div>
+
+
+

@@ -1,0 +1,27 @@
+$def with (lang, modules)
+
+$#Common properties
+$var lang_administration:$lang['common_administration']
+
+$#Page properties
+$var lang_page_title:BeOnline - Servcios
+
+$var is_home_page:False
+$var current_menu:Servicios
+
+<div id="section-content">
+    <div class="section_column" style="width:178px;">
+        $if modules.has_key('serv_col1'):
+            $:modules['serv_col1']['contents']
+    </div>
+    <div class="section_column" style="width: 310px;">
+        $if modules.has_key('serv_col2'):
+            $:modules['serv_col2']['contents']
+    </div>
+
+    <div class="section_column" style="width:385px;background-image:url(/static/s/images/section-line.png); background-repeat:no-repeat; background-position:left;">
+        $if modules.has_key('serv_col3'):
+            $:modules['serv_col3']['contents']
+    </div>
+    <div style="clear:both"></div>
+</div>

@@ -1,0 +1,76 @@
+$def with (lang, users)
+
+$#Common properties
+$var lang_administration:$lang['common_administration']
+
+$#Page properties
+$var lang_page_title:$lang['index_page_title']
+
+
+<div id="inner_content">
+    <div id="top_panel">
+        <div id="breadcrumbs">
+
+            Users List
+
+        </div>
+        <div id="panel_buttons">
+
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <div id="main_content">
+
+        <a href="$admin_api_url/users/new">New User</a><br /><br />
+
+        <table>
+            <tr>
+                <td>
+                    Name:
+                </td>
+                <td>
+                    Username:
+                </td>
+                <td>
+                    Email:
+                </td>
+                <td>
+                    Privileges level:
+                </td>
+                <td colspan="2" width="175">
+                    Default:
+                </td>
+            </tr>
+            $for user in users:
+                <tr>
+                    <td>
+                        $user['name']
+                    </td>
+                    <td>
+                        $user['username']
+                    </td>
+                    <td>
+                        $user['email']
+                    </td>
+                    <td>
+                        $if user['priv_lev']==0:
+                            User
+                        $elif user['priv_lev']==1:
+                            Administrator
+                        $elif user['priv_lev']==2:
+                        Super Administrator
+                    </td>
+                    <td>
+                        $user['is_default']
+                    </td>
+                    <td>
+                        <a href="$admin_api_url/users/edit/$user['id']"> Edit </a> | <a href="#" alt="$user['id']" class="del_user"> Remove </a>
+                    </td>
+                </tr>
+        </table>
+
+    </div>
+</div>
+
+
+

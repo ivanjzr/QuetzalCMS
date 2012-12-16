@@ -1,0 +1,22 @@
+$def with (lang, modules)
+
+$#Common properties
+$var lang_administration:$lang['common_administration']
+
+$#Page properties
+$var lang_page_title:BeOnline - Portafolio
+
+$var is_home_page:False
+$var current_menu:Portafolio
+
+<div id="section-content">
+    <div class="section_column" style="width:178px;">
+        $if modules.has_key('port_col1'):
+            $:modules['port_col1']['contents']
+    </div>
+    <div class="section_column" style="width: 700px;">
+        $if modules.has_key('port_col2'):
+            $:modules['port_col2']['contents']
+    </div>
+    <div style="clear:both"></div>
+</div>

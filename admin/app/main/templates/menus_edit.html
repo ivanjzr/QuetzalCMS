@@ -1,0 +1,77 @@
+$def with (lang, menu_data)
+
+$#Common properties
+$var lang_administration:$lang['common_administration']
+
+$#Page properties
+$var lang_page_title:$lang['index_page_title']
+
+
+<div id="inner_content">
+    <div id="top_panel">
+        <div id="breadcrumbs">
+
+            Edit Menu
+
+        </div>
+        <div id="panel_buttons">
+
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <div id="main_content">
+
+        <form method="POST" onsubmit="return false;">
+            <fieldset style="padding:16px;">
+                <input type="hidden" name="menu_oid" id="menu_oid" value="$menu_data['id']">
+                <table cellpadding="4" cellspacing="4">
+                    <tr>
+                        <td>
+                            Id:
+                        </td>
+                        <td>
+                            $menu_data['id']
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Title:
+                        </td>
+                        <td>
+                            <input type="text" name="menu_title" id="menu_title" value="$menu_data['title']">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Description:
+                        </td>
+                        <td>
+                            <input type="text" name="menu_descr" id="menu_descr" value="$menu_data['descr']">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Menu Path:
+                        </td>
+                        <td>
+                            <input type="text" name="menu_path" id="menu_path" value="$menu_data['path']">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" align="right">
+                            <input type="button" value="Save" id="save_menu">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+
+
+
+    </div>
+</div>
+
+
+
